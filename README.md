@@ -106,6 +106,11 @@ For help with installing and using Jupyter AI, please see our
 [user documentation on ReadTheDocs](https://jupyter-ai.readthedocs.io/en/latest/users/index.html).
 
 ## Contributing
+Node.js 18.16.0 is known to work.
+Install typscript globally - npm install -g typescript@4.8.3
+and then run following steps:
+./scripts/install.sh
+jlpm dev-install
 
 If you would like to contribute to Jupyter AI, see our
 [contributor documentation on ReadTheDocs](https://jupyter-ai.readthedocs.io/en/latest/contributors/index.html).
