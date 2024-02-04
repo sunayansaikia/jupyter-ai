@@ -15,7 +15,6 @@ from jupyter_core.paths import jupyter_data_dir
 
 Logger = Union[logging.Logger, logging.LoggerAdapter]
 
-
 class ConfigManager:
     """Provides model and embedding provider id along
     with the credentials to authenticate providers.
@@ -89,7 +88,6 @@ class ConfigManager:
 
         fields = config.fields.get(model_id, {})
         provider_params = {"model_id": local_model_id, **fields}
-
         self._authenticate_provider(provider, provider_params, config)
         self.lm_provider = provider
         self.lm_provider_params = provider_params
@@ -106,9 +104,11 @@ class ConfigManager:
 
         if not provider:
             raise ValueError(f"No provider and model found with '{model_id}'")
-
         provider_params = {"model_id": local_model_id}
-
+        embedded_provider_api_base = os.getenv("EMBEDDED_PROVIDER_API_BASE", "")
+        if embedded_provider_api_base != "":
+            provider_params = {"model_id": local_model_id, "openai_api_base": embedded_provider_api_base}
+        print(f"----- embedded provider: {provider_params} -----")
         self._authenticate_provider(provider, provider_params, config)
         self.em_provider = provider
         self.em_provider_params = provider_params

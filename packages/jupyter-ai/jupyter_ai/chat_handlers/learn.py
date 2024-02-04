@@ -68,6 +68,7 @@ class LearnChatHandler(BaseChatHandler, BaseRetriever):
             return
         if self.index is None:
             try:
+                #print(f'-----  embeddings: {embeddings} -----')
                 self.index = FAISS.load_local(
                     INDEX_SAVE_DIR, embeddings, index_name=self.index_name
                 )
