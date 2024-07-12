@@ -370,7 +370,8 @@ class ConfigManager(Configurable):
             raise WriteConflictError(
                 "Configuration was modified after it was read from disk."
             )
-
+        
+        #TODO: Make it non mandatory to have keys or create a new model drop down altogether 
         if config_update.api_keys:
             for api_key_value in config_update.api_keys.values():
                 if not api_key_value:

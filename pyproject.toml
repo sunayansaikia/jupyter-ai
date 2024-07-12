@@ -28,6 +28,12 @@ ignore = [".*"]
 [tool.check-wheel-contents]
 ignore = ["W002"]
 
+[tool.hatch.build.targets.wheel]
+packages = [
+    "packages/jupyter-ai:jupyter-ai",
+    "packages/jupyter-ai-magics:jupyter-ai-magics"
+]
+
 [tool.importlinter]
 root_packages = ["jupyter_ai", "jupyter_ai_magics"]
 include_external_packages = true
@@ -43,3 +49,5 @@ ignore_imports = ["jupyter_ai_magics.providers -> pydantic"]
 
 [tool.pytest.ini_options]
 addopts = "--ignore packages/jupyter-ai-module-cookiecutter"
+
+

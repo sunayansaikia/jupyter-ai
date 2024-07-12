@@ -33,7 +33,7 @@ if TYPE_CHECKING:
     from jupyter_ai.handlers import RootChatHandler
 
 
-def get_preferred_dir(root_dir: str, preferred_dir: str) -> str | None:
+def get_preferred_dir(root_dir: str, preferred_dir: str) -> Optional[str]:
     if preferred_dir != "":
         preferred_dir = os.path.expanduser(preferred_dir)
         if not preferred_dir.startswith(root_dir):
@@ -310,6 +310,8 @@ class BaseChatHandler:
     def get_llm_chain(self):
         lm_provider = self.config_manager.lm_provider
         lm_provider_params = self.config_manager.lm_provider_params
+        #print(lm_provider)
+        #print(lm_provider_params)
 
         curr_lm_id = (
             f'{self.llm.id}:{lm_provider_params["model_id"]}' if self.llm else None
